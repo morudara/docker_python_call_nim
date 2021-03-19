@@ -1,0 +1,10 @@
+version: "3.4"
+services:
+  python_nim_project:
+    build: ./python_nim_project
+    container_name: python_nim_project
+    volumes:
+      - ./python_nim_project:/python_nim_project
+    tty: true
+    ports:
+      - 8050:8000
