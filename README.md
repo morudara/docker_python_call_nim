@@ -12,18 +12,17 @@ $ dc ps
 -------------------------------------------------------------
 python_nim_project   python3   Up      0.0.0.0:8050->8000/tcp
 
-# コンテナ接続
-$ docker-compose exec python_nim_project bash
-
 # コンテナ内でNimコンパイル
-$ nim c --threads:on --app:lib --out:writer.so writer
-
-# execから抜けるとき
-$ exit
+$ docker-compose exec python_nim_project nim c --threads:on --app:lib --out:writer.so writer
 
 # コード実行
 $ docker-compose run --rm python_nim_project python main.py
 
+# コンテナ接続
+$ docker-compose exec python_nim_project bash
+
+# execから抜けるとき
+$ exit
 
 # 落とすとき(イメージも削除)
 $ docker-compose down --rmi all
